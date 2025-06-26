@@ -1,0 +1,10 @@
+{
+    "name": "testing-golang",
+    "extensions": [
+    ],
+    "dockerFile": "Dockerfile",
+    "settings": {
+        "files.exclude": {
+        }
+    }
+}
