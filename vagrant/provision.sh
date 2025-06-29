@@ -21,10 +21,17 @@ echo "export GOPATH=$HOME/go" >> /home/vagrant/.bashrc
 echo "export PATH=$GOPATH/bin:$PATH" >> /home/vagrant/.bashrc
 
 # debugger
+# delv, debugger
 go install github.com/go-delve/delve/cmd/dlv@v1.24.0
+# pls
+go install golang.org/x/tools/gopls@v0.15.3
 
-# optional gbd
+# optional gbd (gnu debugger)
 sudo apt-get install gdb -y
+
+snap install micro --classic
+micro -plugin install filemanager
+micro -plugin install go
 
 # force startup folder to vagrant project
 echo "cd /vagrant/src" >> /home/vagrant/.bashrc

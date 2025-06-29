@@ -18,4 +18,6 @@ RUN go version \
     && echo "export GOROOT=/usr/local/go" >> ~/.bashrc \
     && echo "export GOPATH=/vagrant" >> ~/.bashrc 
 
+run go install -u golang.org/x/tools/gopls@v0.15.3
+
 USER user
