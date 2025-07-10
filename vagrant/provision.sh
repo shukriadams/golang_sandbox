@@ -16,22 +16,13 @@ sudo rm -rf /usr/local/go
 sudo tar -C /usr/local -xzf gol.tar.gz
 
 # set env vars that go needs to work
-echo "export PATH=$PATH:/usr/local/go/bin" >> /home/vagrant/.bashrc
-echo "export GOPATH=$HOME/go" >> /home/vagrant/.bashrc
-echo "export PATH=$GOPATH/bin:$PATH" >> /home/vagrant/.bashrc
+echo "export GOPATH=/home/vagrant/go" >> /home/vagrant/.bashrc
+echo "export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin" >> /home/vagrant/.bashrc
 
-# debugger
-# delv, debugger
+# delv, go debugger
 go install github.com/go-delve/delve/cmd/dlv@v1.24.0
-# pls
-go install golang.org/x/tools/gopls@v0.15.3
-
-# optional gbd (gnu debugger)
-sudo apt-get install gdb -y
-
-snap install micro --classic
-micro -plugin install filemanager
-micro -plugin install go
+# pls, required for go intellisense etc
+go install golang.org/x/tools/gopls@v0.19.1
 
 # force startup folder to vagrant project
 echo "cd /vagrant/src" >> /home/vagrant/.bashrc

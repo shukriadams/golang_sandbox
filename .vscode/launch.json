@@ -5,13 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Connect to external session",
+            "name": "Launch Package",
             "type": "go",
-            "debugAdapter": "dlv-dap", // `legacy` by default
-            "request": "attach",
-            "mode": "remote",
-            "port": 3018,
-            "host": "172.21.200.107" // can skip for localhost
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/src/main.go",
+            "env": {
+                "GOPATH" : "/home/vagrant/go"
+            },
         }
     ]
 }
