@@ -1,23 +1,23 @@
 # build locally with : docker build .
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
-COPY . .
+ENV GOPATH "/home/user/go"
+ENV PATH "$PATH:/usr/local/go/bin:$GOPATH/bin"
 
-ENV PATH "$PATH:/usr/local/go/bin:/home/user/go/bin:/home/user/.cargo/bin"
 RUN apt-get update \
     && apt-get install -y curl git wget jq \
     && useradd -m user \
     && su user \
-    && wget https://golang.org/dl/go1.24.4.linux-amd64.tar.gz \
+    # install go
+    && wget https://go.dev/dl/go1.23.6.linux-amd64.tar.gz -O gol.tar.gz \
     && rm -rf /usr/local/go \
-    && tar -C /usr/local -xzf go1.24.4.linux-amd64.tar.gz \
-    && rm go1.24.4.linux-amd64.tar.gz \
-    && echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc \
-
-RUN go version \
-    && echo "export GOROOT=/usr/local/go" >> ~/.bashrc \
-    && echo "export GOPATH=/vagrant" >> ~/.bashrc 
-
-run go install -u golang.org/x/tools/gopls@v0.15.3
+    && tar -C /usr/local -xzf gol.tar.gz \
+    && rm gol.tar.gz \
+    # configure go
+    && echo "export GOPATH=/home/user/go" >> ~/.bashrc \
+    && echo "export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin" >> ~/.bashrc \
+    # install go dev extensions
+    && go install github.com/go-delve/delve/cmd/dlv@v1.24.0 \
+    && go install golang.org/x/tools/gopls@v0.19.1
 
 USER user

@@ -15,6 +15,10 @@ sudo rm -rf /usr/local/go
 # unzip download
 sudo tar -C /usr/local -xzf gol.tar.gz
 
+# need env vars in current session
+export GOPATH=/home/vagrant/go
+export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+
 # set env vars that go needs to work
 echo "export GOPATH=/home/vagrant/go" >> /home/vagrant/.bashrc
 echo "export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin" >> /home/vagrant/.bashrc
