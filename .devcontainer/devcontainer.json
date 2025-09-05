@@ -1,6 +1,7 @@
 {
     "name": "testing-golang",
     "extensions": [
+        "golang.go"
     ],
     "dockerFile": "Dockerfile",
     "settings": {
