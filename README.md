@@ -1,10 +1,20 @@
-# setup visual studio code to debug in vagrant
+# Golang dev sandbox 
+
+Has config for both Vagrant and Github devcontainer
+
+## Github Devcontainer
+
+Creating a devcontainer with this project will automatically use the included ./devcontainer/Dockerfile as the machin base, and install the required Golang plugin. You can debug immediately.
+
+## Local Visual Studio Code
+
+### Setup visual studio code to debug in vagrant
 
 install local VS Code plugins
 
 - Remote SSH
 
-## Debug in VSCode
+### Debug in VSCode
 
 - ctrl-shift P to bring up command dropdown
 - Click "Remote-ssh > Connect to host"
