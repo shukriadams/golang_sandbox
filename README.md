@@ -1,10 +1,12 @@
 # Golang dev sandbox 
 
-Has config for both Vagrant and Github devcontainer
+Has config for both Vagrant and Github devcontainer.
 
 ## Github Devcontainer
 
 Creating a devcontainer with this project will automatically use the included ./devcontainer/Dockerfile as the machin base, and install the required Golang plugin. You can debug immediately.
+
+Note that the Dockerimage is compiled each time you spin up a new devcontainer instance.
 
 ## Local Visual Studio Code
 
